@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html data-ng-app="pjlongApp"  ng-controller="titleCtrl">
+<head>
+	<link rel="stylesheet" type="text/css" href="./static/css/style.css"/>
+	<!--<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>-->
+	<script src="./bower_components/angular/angular.min.js"></script>
+	<script src="./bower_components/angular-route/angular-route.min.js"></script>
+
+	<title data-ng-bind="Page.title()"></title>
+</head>
+<body>
+	<header class="menu-bar" data-ng-controller="menuCtrl">
+		<ul>
+			<li data-ng-repeat="item in items">
+				<a href="{{ item.url }}" >{{item.name}}</a>
+			</li>
+		</ul>
+	</header>
+
+	<section data-ng-view=""></section>
+
+	<script src="./static/js/controllers.js" ></script>
+</body>
+</html>

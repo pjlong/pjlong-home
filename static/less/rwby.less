@@ -1,0 +1,296 @@
+@window-width: 640px;
+@window-height: 360px;
+
+@panel-width: @window-width/4;
+@panel-height: @window-height;
+
+@char-width: 11rem;
+@char-height: 22rem;
+
+
+/* Shadows */
+@ruby-shadow-inner: 0 0 10px 5px #f00;
+@ruby-shadow-outer: 0 0 40px 10px #301;
+
+.ruby_shadow() {
+  box-shadow: @ruby-shadow-inner, @ruby-shadow-outer;
+}
+.ruby_shadow_inset() {
+  box-shadow: inset @ruby-shadow-inner, inset @ruby-shadow-outer;
+}
+
+
+@weiss-shadow-inner: 0 0 10px 5px #fff;
+@weiss-shadow-outer: 0 0 40px 10px #99f;
+
+.weiss_shadow() {
+  box-shadow: @weiss-shadow-inner, @weiss-shadow-outer;
+}
+
+.weiss_shadow_inset() {
+  box-shadow: inset @weiss-shadow-inner, inset @weiss-shadow-outer;
+}
+
+@blake-shadow-inner: 0 0 10px 5px #000;
+@blake-shadow-outer: 0 0 40px 10px #204;
+.blake_shadow() {
+  box-shadow: @blake-shadow-inner, @blake-shadow-outer;
+}
+.blake_shadow_inset() {
+  box-shadow: inset @blake-shadow-inner, inset @blake-shadow-outer;
+}
+
+
+@yang-shadow-inner: 0 0 10px 7px #ff0;
+@yang-shadow-outer: 0 0 40px 10px #f90;
+.yang_shadow() {
+  box-shadow: @yang-shadow-inner, @yang-shadow-outer;
+}
+.yang_shadow_inset() {
+  box-shadow: inset @yang-shadow-inner, inset @yang-shadow-outer;
+}
+
+/* Transition Timing */
+@panel-flip-time: .5s;
+@panel-stretch-time: .75s;
+
+
+
+
+.rwby-wrapper {
+  background-color: #000;
+  position: relative;
+  width: @window-width;
+  height: @window-height;
+  margin: 0 auto;
+  z-index: 0;
+}
+
+.panel {
+  width: @panel-width;
+  height: @panel-height;
+  
+  display: inline-block;
+  position: absolute;
+  transform-style: preserve-3d;
+  perspective: 100px;
+  z-index: 0;
+  transition: transform @panel-flip-time @panel-stretch-time,
+              width @panel-stretch-time ease-in,
+              left @panel-stretch-time ease-in,
+              z-index 0s @panel-flip-time + @panel-stretch-time;
+  
+  &:hover {
+    z-index: 10;
+    //transition: .25s z-index,
+    //            .25s box-shadow;
+  }
+
+  &.active {
+    width: @window-width;
+    border-width: 0;
+    z-index: 100;
+    transition: transform @panel-flip-time,
+                width @panel-stretch-time ease-in @panel-flip-time,
+                left @panel-stretch-time ease-in @panel-flip-time;
+
+    &.one,
+    &.two,
+    &.three,
+    &.four {
+      left: 0;
+
+      &:hover {
+        box-shadow: 0 0 transparent;
+      }
+    }
+
+    .back {
+      transition: box-shadow .5s ease @panel-flip-time + @panel-stretch-time;
+
+      .player {
+        opacity: 1;
+        transition: .25s opacity @panel-flip-time + @panel-stretch-time;
+      }
+    }
+  }
+
+  .front,
+  .back {
+    backface-visibility: hidden;
+    position: absolute;
+    z-index: 0;
+  }
+  
+  .front {
+    width: @panel-width ;
+    height: @panel-height;
+    border: .625rem solid transparent;
+    box-sizing: border-box;
+    transition: .25s all;
+
+    &:hover {
+      border-width: 0;
+      z-index: 10;
+      transition: .25s all;
+    }
+  }
+  
+  .back {
+    transform: rotateY(180deg);
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,1);
+
+    width: 100%;
+    height: 100%;
+
+    .player {
+      opacity: 0;
+    }
+  }  
+
+  &.one {
+    left: 0;
+    
+    .front {
+      background: url(http://img2.wikia.nocookie.net/__cb20130701122724/rwby/images/thumb/2/2d/RubyReveal.png/197px-RubyReveal.png);
+      background-color: #000;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    
+      &:hover {.ruby_shadow_inset;}
+    }
+
+    &.active {
+      transform: rotateY(-179.99deg);
+
+      .back {
+        .ruby_shadow;
+      }
+    }
+  }
+  
+  &.two {
+    left: @panel-width;
+
+    .front{
+      background: url(http://img2.wikia.nocookie.net/__cb20130701122719/rwby/images/thumb/3/33/WeissReveal.png/197px-WeissReveal.png);
+      background-color: #000;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;    
+      
+      &:hover {.weiss_shadow_inset;}
+    }
+
+    &.active {
+      transform: rotateY(-179.99deg);
+
+      .back {
+        .weiss_shadow;
+      }
+    }
+  }
+  
+  &.three {
+    left: 2*@panel-width;
+    
+    .front{
+      background: url(http://img2.wikia.nocookie.net/__cb20130701122712/rwby/images/thumb/6/69/BlakeReveal.png/197px-BlakeReveal.png);
+      background-color: #000;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    
+      &:hover {.blake_shadow_inset;}
+    }
+
+    &.active {
+      transform: rotateY(179.99deg);
+      .back {
+        .blake_shadow;
+      }
+    }
+  }
+  
+  &.four {
+    left: 3*@panel-width;
+
+    .front{
+      background: url(http://img2.wikia.nocookie.net/__cb20130701122051/rwby/images/thumb/0/09/YangReveal.png/197px-YangReveal.png);
+      background-color: #000;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    
+      &:hover {.yang_shadow_inset;}
+    }
+
+    &.active {
+      transform: rotateY(179.99deg);
+      .back {
+        .yang_shadow;
+      }
+    }
+  }
+}
+
+.backgrounds {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+ 
+.emblem {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: .5s opacity;
+
+  &:after {
+    content: "Original Artist: u/Blob-Monster";
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+  }
+
+  &.active {
+    opacity: 1;
+    transition: .5s opacity @panel-flip-time + @panel-stretch-time
+  }
+
+  &.ruby {
+    background: url(http://i.imgur.com/K0M3ykU.jpg) no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  &.weiss {
+    background: url(http://i.imgur.com/owwMIkJ.jpg) no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  &.blake {
+    background: url(http://i.imgur.com/qXHN6PA.jpg) no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  &.yang {
+    background: url(http://i.imgur.com/dWwPTeZ.jpg) no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+.ad-container.ad-overlay { 
+  visibility: hidden !important;
+}
