@@ -18,13 +18,13 @@ def template(filename):
 
 @app.route('/bower_components/<filename:path>')
 def bower_components(filename):
-	#return static_file(filename, root=BOWER_ROOT)
-	pass
+	#used in dev
+	return static_file(filename, root=BOWER_ROOT)
 
 @app.route('/static/<filename:path:re:^(*.css|*.js)$>')
 def static(filename):
-	#return static_file(filename, root=STATIC_ROOT)
-	pass
+	#only in dev
+	return static_file(filename, root=STATIC_ROOT)
 
 if __name__ == '__main__':
 	run(app=app, host='0.0.0.0', port=8080)

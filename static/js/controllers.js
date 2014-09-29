@@ -76,9 +76,8 @@ pjlongApp.controller('rwbyCtrl', ['$scope', '$window', 'Page', function ($scope,
           curPlayer.pauseVideo();
         }
       } else {
-        panel.classList.toggle('active');
-        document.getElementsByClassName('emblem '+panel.id)[0].classList.toggle('active');
-      
+        panel.classList.add('active');
+        document.getElementsByClassName('emblem '+panel.id)[0].classList.add('active');
         curPlayer.playVideo();
       }
     };
@@ -113,12 +112,14 @@ pjlongApp.controller('rwbyCtrl', ['$scope', '$window', 'Page', function ($scope,
         }
       );
     }
+
+    var rwbyApp = document.getElementById('rwby-trailer');
+    rwbyApp.classList.add('yt-ready');
   };
 
   $window.onPlayerStateChange = function(event) {
     if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
       var panel, el = event.target.d;
-
       while (el && el.parentNode) {
         el = el.parentNode;
         if (el.classList.contains('panel')) {
@@ -127,9 +128,9 @@ pjlongApp.controller('rwbyCtrl', ['$scope', '$window', 'Page', function ($scope,
         }
       }
 
-      if (panel !== undefined) {
-        panel.classList.toggle('active');
-        document.getElementsByClassName('emblem '+panel.id)[0].classList.toggle('active');
+      if (panel) {
+        panel.classList.remove('active');
+        document.getElementsByClassName('emblem '+panel.id)[0].classList.remove('active');
       }
     }
   };
