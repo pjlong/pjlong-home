@@ -22,10 +22,8 @@ body {
   position: relative;
   top: 0;
 }
-.menu-bar:hover {
-  background: #222222;
-}
 .menu-bar ul {
+  background-color: transparent;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   display: -webkit-box;
@@ -34,6 +32,13 @@ body {
   display: flex;
   line-height: 3rem;
   margin: 0;
+  -webkit-transition: background-color 0.25s ease;
+  transition: background-color 0.25s ease;
+}
+.menu-bar ul:hover {
+  background-color: #222222;
+  -webkit-transition: background-color 0.25s ease;
+  transition: background-color 0.25s ease;
 }
 .menu-bar ul li {
   display: inline-block;
@@ -277,6 +282,8 @@ section {
 }
 .panel .back .player {
   opacity: 0;
+  -webkit-transition: 0.2s opacity ease-out;
+  transition: 0.2s opacity ease-out;
 }
 .panel.one {
   left: 0;

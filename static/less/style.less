@@ -27,15 +27,18 @@ body {
   position: relative;
   top: 0;
 
-  &:hover {
-    background: @menu-bar-color;
-  }
-
   ul {
+    background-color: transparent;
     box-sizing: border-box;
     display: flex;
     line-height: @menu-bar-height;
     margin: 0;
+    transition: background-color .25s ease;
+
+    &:hover {
+      background-color: @menu-bar-color;
+      transition: background-color .25s ease;      
+    }
 
     li {
       display: inline-block;
