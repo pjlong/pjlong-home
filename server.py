@@ -9,10 +9,12 @@ BOWER_ROOT = os.path.join(PROJECT_ROOT, 'bower_components')
 app = application = Bottle()
 
 @app.route('/')
+@app.route('/resume')
+@app.route('/rwby')
 def home():
 	return static_file('index.html', root=TEMPLATE_ROOT, mimetype='text/html')
 
-@app.route('/<filename:re:.*\.html>')
+@app.route('/templates/<filename:re:.*\.html>')
 def template(filename):
 	return static_file(filename, root=TEMPLATE_ROOT)
 

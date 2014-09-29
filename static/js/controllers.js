@@ -4,16 +4,17 @@ pjlongApp.config(['$routeProvider', '$locationProvider',
 	function ($routeProvider, $locationProvider) {
 		$routeProvider
       .when('/', {
-        templateUrl: '/home.html',
+        templateUrl: '/templates/home.html',
         controller: 'homeCtrl'
       })
       .when('/rwby', {
-        templateUrl: '/rwby.html',
+        templateUrl: '/templates/rwby.html',
         controller: 'rwbyCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
+    $locationProvider.html5Mode(true);
 	}]);
 
 pjlongApp.controller('homeCtrl', ['$scope', 'Page', function ($scope, Page) {
@@ -29,11 +30,11 @@ pjlongApp.controller('menuCtrl', ['$scope', function ($scope) {
       name: 'Home'
     },
     {
-      url: '#/resume',
+      url: '/resume',
       name: 'Resume'
     },
     {
-      url: '#/rwby',
+      url: '/rwby',
       name: 'RWBY'
     }
   ];
