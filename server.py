@@ -6,7 +6,7 @@ TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, 'templates')
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 BOWER_ROOT = os.path.join(PROJECT_ROOT, 'bower_components')
 
-app = Bottle()
+app = application = Bottle()
 
 @app.route('/')
 def home():
@@ -18,10 +18,13 @@ def template(filename):
 
 @app.route('/bower_components/<filename:path>')
 def bower_components(filename):
-	return static_file(filename, root=BOWER_ROOT)
+	#return static_file(filename, root=BOWER_ROOT)
+	pass
 
 @app.route('/static/<filename:path:re:^(*.css|*.js)$>')
 def static(filename):
-	return static_file(filename, root=STATIC_ROOT)
+	#return static_file(filename, root=STATIC_ROOT)
+	pass
 
-run(app, host='localhost', port="8080", debug=True)
+if __name__ == '__main__':
+	run(app=app, host='0.0.0.0', port=8080)
