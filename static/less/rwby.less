@@ -84,7 +84,7 @@
   transform-style: preserve-3d;
   perspective: 100px;
   z-index: 0;
-  transition: transform @panel-flip-time @panel-stretch-time,
+  transition: transform @panel-flip-time ease-out @panel-stretch-time,
               width @panel-stretch-time ease-in,
               left @panel-stretch-time ease-in,
               z-index 0s @panel-flip-time + @panel-stretch-time;
@@ -99,7 +99,7 @@
     width: @window-width;
     border-width: 0;
     z-index: 100;
-    transition: transform @panel-flip-time,
+    transition: transform @panel-flip-time ease-in,
                 width @panel-stretch-time ease-in @panel-flip-time,
                 left @panel-stretch-time ease-in @panel-flip-time;
 
@@ -125,7 +125,7 @@
       }
 
       .player {
-        opacity: 0;
+        opacity: 1;
         transition: .25s opacity @panel-flip-time + @panel-stretch-time;
       }
     }

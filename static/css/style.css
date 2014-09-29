@@ -199,8 +199,8 @@ section {
   -webkit-perspective: 100px;
   perspective: 100px;
   z-index: 0;
-  -webkit-transition: -webkit-transform 0.5s 0.75s, width 0.75s ease-in, left 0.75s ease-in, z-index 0s 1.25s;
-  transition: transform 0.5s 0.75s, width 0.75s ease-in, left 0.75s ease-in, z-index 0s 1.25s;
+  -webkit-transition: -webkit-transform 0.5s ease-out 0.75s, width 0.75s ease-in, left 0.75s ease-in, z-index 0s 1.25s;
+  transition: transform 0.5s ease-out 0.75s, width 0.75s ease-in, left 0.75s ease-in, z-index 0s 1.25s;
 }
 .panel:hover {
   z-index: 10;
@@ -209,8 +209,8 @@ section {
   width: 640px;
   border-width: 0;
   z-index: 100;
-  -webkit-transition: -webkit-transform 0.5s, width 0.75s ease-in 0.5s, left 0.75s ease-in 0.5s;
-  transition: transform 0.5s, width 0.75s ease-in 0.5s, left 0.75s ease-in 0.5s;
+  -webkit-transition: -webkit-transform 0.5s ease-in, width 0.75s ease-in 0.5s, left 0.75s ease-in 0.5s;
+  transition: transform 0.5s ease-in, width 0.75s ease-in 0.5s, left 0.75s ease-in 0.5s;
 }
 .panel.active.one,
 .panel.active.two,
@@ -235,7 +235,7 @@ section {
   transition: 1.25s opacity ease-in;
 }
 .panel.active .back .player {
-  opacity: 0;
+  opacity: 1;
   -webkit-transition: 0.25s opacity 1.25s;
   transition: 0.25s opacity 1.25s;
 }
