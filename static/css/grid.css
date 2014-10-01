@@ -1,11 +1,9 @@
 .col {
   display: block;
   float: left;
-  margin: 1% 0;
-  margin-left: 1.5%;
+  margin: 1% 0.75%;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding-left: 1rem;
 }
 .span_1_of_1,
 .span_2_of_2,
@@ -44,7 +42,8 @@
 .span_6_of_9 {
   width: 65.16666667%;
 }
-.span_3_of_4 .span_6_of_8 {
+.span_3_of_4,
+.span_6_of_8 {
   width: 73.5%;
 }
 .span_2_of_5 {

@@ -1,0 +1,116 @@
+.wrapper {
+  width: 90%;
+  height: 100%;
+  margin: 6rem auto;
+}
+#pjlong-resume {
+  box-shadow: 0 0 10px #555;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #333;
+  display: inline-block;
+  font-family: Raleway;
+  font-size: 1.25rem;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+#pjlong-resume header {
+  width: 100%;
+  height: 5%;
+  display: block;
+  position: relative;
+}
+#pjlong-resume header h1 {
+  display: inline-block;
+  float: left;
+}
+#pjlong-resume header div {
+  display: table-cell;
+  position: relative;
+  height: 100%;
+}
+#pjlong-resume header div.right {
+  padding: 1rem 0;
+  vertical-align: bottom;
+}
+#pjlong-resume header .pull-left {
+  clear: both;
+  float: left;
+}
+#pjlong-resume header .pull-right {
+  clear: both;
+  display: inline-block;
+  float: right;
+}
+#pjlong-resume > div {
+  border-top: 2px solid #222;
+}
+#pjlong-resume ul {
+  padding: 0;
+  margin: 0;
+}
+#pjlong-resume ul li {
+  list-style: none;
+}
+#pjlong-resume ul li:before {
+  content: '-';
+  margin-right: .5rem;
+}
+#pjlong-resume h4 {
+  margin: 0;
+  color: #111;
+}
+#pjlong-resume h4 .date {
+  float: right;
+  clear: right;
+  font-style: italic;
+  font-weight: normal;
+  color: #999;
+}
+#pjlong-resume .minor {
+  font-size: .9rem;
+  color: #333;
+}
+#pjlong-resume hr {
+  margin: 0;
+}
+header.resume {
+  width: 100%;
+  background-color: #0277bd;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: Merriweather;
+  padding: 1rem 20%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+header.resume .header-name {
+  font-weight: bold;
+  font-size: 5rem;
+  text-shadow: 1px 1px 2px #000;
+}
+header.resume #linkedin {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  padding: .25rem;
+}
+header.resume #linkedin .linkedin-pos {
+  fill: #fff;
+  width: 2rem;
+  height: 2rem;
+}
+.plain-text {
+  font-style: normal;
+  font-weight: normal;
+  margin: 0;
+}
+.side-bar {
+  float: left;
+  height: 100%;
+  width: 20rem;
+}

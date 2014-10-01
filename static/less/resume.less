@@ -1,0 +1,144 @@
+.wrapper {
+  width: 90%;
+  height: 100%;
+  margin: 6rem auto;
+}
+
+#pjlong-resume {
+  box-shadow: 0 0 10px #555;
+  box-sizing: border-box;
+  color: #333;
+  display: inline-block;
+  font-family: Raleway;
+  font-size: 1.25rem;
+  width: 100%;
+  padding: 2rem 1rem;
+
+
+  header {
+    width: 100%;
+    height: 5%;
+    display: block;
+    position: relative;
+
+    h1 {
+      display: inline-block;
+      float: left;
+    }
+
+    div {
+      display: table-cell;
+      position: relative;
+      height: 100%;
+
+      &.right {
+        padding: 1rem 0;
+        vertical-align: bottom;
+      }
+    }
+
+    .pull-left {
+      clear: both;
+      float: left;
+    }
+
+    .pull-right {
+      clear: both;
+      display: inline-block;
+      float: right;
+    }
+  }
+
+  & > div {
+    border-top: 2px solid #222;
+  }
+
+  h2 {
+    //border-top: 2px solid #333;
+    //border-bottom: 1px solid #555;
+  }
+
+
+  ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      list-style: none;
+
+      &:before {
+        content: '-';
+        margin-right: .5rem;
+      }
+    }
+  }
+
+  h4 {
+    margin: 0;
+    color: #111;
+
+    .date {
+      float: right;
+      clear: right;
+      font-style: italic;
+      font-weight: normal;
+      color: #999;
+    }
+  }
+
+  .minor {
+    font-size: .9rem;
+    color: #333;
+  }
+
+  hr {
+    margin: 0;
+  }
+}
+
+header.resume {
+  width: 100%;
+  background-color: #0277bd;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: Merriweather;
+  padding: 1rem 20%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .header-name {
+    font-weight: bold;
+    font-size: 5rem;
+    text-shadow: 1px 1px 2px #000;
+
+  }
+
+  #linkedin {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    padding: .25rem;
+
+    .linkedin-pos {
+      fill: #fff;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
+
+
+.plain-text {
+  font-style: normal;
+  font-weight: normal;
+  margin: 0;
+}
+
+.side-bar {
+  float: left;
+  height: 100%;
+  width: 20rem;
+}

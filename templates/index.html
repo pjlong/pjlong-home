@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html data-ng-app="pjlongApp"  ng-controller="titleCtrl">
+<html class="no-js" lang="" data-ng-app="pjlongApp"  ng-controller="titleCtrl">
 <head>
-	<link rel="stylesheet" type="text/css" href="./static/css/style.css"/>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="./bower_components/normalize-css/normalize.css">
+	<link rel="stylesheet" href="./static/css/style.css"/>
 	<!--<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>-->
 	<script src="./bower_components/angular/angular.min.js"></script>
 	<script src="./bower_components/angular-route/angular-route.min.js"></script>
@@ -9,16 +12,22 @@
 	<title data-ng-bind="Page.title()"></title>
 </head>
 <body>
+	<!--[if lt IE 8]>
+		<p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
 	<header class="menu-bar" data-ng-controller="menuCtrl">
-		<ul>
-			<li data-ng-repeat="item in items">
-				<a href="{{ item.url }}" >{{item.name}}</a>
+		<nav>		
+			<ul>
+			<li data-ng-repeat="item in items" data-ng-class="{active: isActive(item.url)}">
+				<a href="{{ item.url }}"> {{item.name}}</a>
 			</li>
-		</ul>
+			</ul>
+		</nav>
 	</header>
 
-	<section data-ng-view=""></section>
-
+	<section data-ng-view="" class="main"></section>
+	<script src="./static/js/app.js" ></script>
 	<script src="./static/js/controllers.js" ></script>
 </body>
 </html>

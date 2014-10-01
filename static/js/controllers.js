@@ -1,69 +1,77 @@
-var pjlongApp = angular.module('pjlongApp', ['ngRoute']);
+angular.module('pjlongApp.controllers', []);
 
-pjlongApp.config(['$routeProvider', '$locationProvider',
-	function ($routeProvider, $locationProvider) {
-		$routeProvider
-      .when('/', {
-        templateUrl: '/templates/home.html',
-        controller: 'homeCtrl'
-      })
-      .when('/rwby', {
-        templateUrl: '/templates/rwby.html',
-        controller: 'rwbyCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-    $locationProvider.html5Mode(true);
-	}]);
-
-pjlongApp.controller('homeCtrl', ['$scope', 'Page', function ($scope, Page) {
+angular.module('pjlongApp.controllers').controller('homeCtrl', ['$scope', 'Page', function ($scope, Page) {
   Page.setTitle('Home');
   $scope.test = 'Hello World!';
 
 }]);
 
-pjlongApp.controller('menuCtrl', ['$scope', function ($scope) {
+angular.module('pjlongApp.controllers').controller('menuCtrl', ['$scope', '$location', function ($scope, $location) {
+  $scope.isActive = function (path) {
+    if ($location.path() == path) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   $scope.items = [
     {
       url: '/',
-      name: 'Home'
+      name: 'Home',
+      theme: 'light'
     },
     {
       url: '/resume',
-      name: 'Resume'
+      name: 'Resume',
+      theme: 'dark'
     },
     {
       url: '/rwby',
-      name: 'RWBY'
+      name: 'RWBY',
+      theme: 'light'
     }
   ];
 }]);
 
-pjlongApp.factory('Page', function () {
-  var title = "Home";
-  return {
-    title: function () { return title; },
-    setTitle: function(newTitle) { title = newTitle; }
-  };
-});
 
-pjlongApp.controller('titleCtrl', ['$scope', 'Page', function ($scope, Page) {
+angular.module('pjlongApp.controllers').controller('titleCtrl', ['$scope', 'Page', function ($scope, Page) {
   $scope.Page = Page;
 }]);
 
-pjlongApp.controller('rwbyCtrl', ['$scope', '$window', 'Page', function ($scope, $window, Page) {
+angular.module('pjlongApp.controllers').controller('resumeCtrl', ['$scope', 'Page', function ($scope, Page) {
+  Page.setTitle('My Resume');
+
+  $scope.header = {
+    name: "PHILLIP LONG",
+    address: "11606 Cedar Spring Ct. Cupertino, CA 95014",
+    link: "linkedin.com/in/pjlong",
+    email: "phil.long.09@gmail.com",
+    phone: "(408) 899-9021"
+  };
+
+  $scope.resume = [
+    {
+      section: 'EDUCATION',
+    },
+  ];
+}]);
+
+
+angular.module('pjlongApp.controllers').controller('rwbyCtrl', ['$scope', '$window', 'Page', function ($scope, $window, Page) {
   Page.setTitle('RWBY');
+
   $scope.videoWidth = 640;
   $scope.videoHeight = 360;
 
   $scope.$on('$viewContentLoaded', function () {
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
+    /*Load YouTube API if it doesn't exist*/
+    var youTubeAPI = document.getElementById('www-widgetapi-script');
+    if (!youTubeAPI) {
+      $scope.loadYouTubeAPI();
+    }
 
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
+    /*Add Video Players to Array*/
     var panelNodes = document.getElementsByClassName("panel");
     var panelClick = function () {
       var panel = this;
@@ -83,10 +91,31 @@ pjlongApp.controller('rwbyCtrl', ['$scope', '$window', 'Page', function ($scope,
       }
     };
 
+    /*Add Click Listener to all Panels*/
     for (var i=0; i<panelNodes.length; i++) {
       panelNodes[i].addEventListener('click', panelClick, false);
     }
+
+    if (youTubeAPI) {
+      var rwbyApp = document.getElementById('rwby-trailer');
+      rwbyApp.classList.add('yt-ready');
+    }
   });
+
+  $scope.loadYouTubeAPI = function () {
+    var tag = document.createElement('script');
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+    tag.async = false;
+    tag.onload = function () {
+      var rwbyApp = document.getElementById('rwby-trailer');
+      rwbyApp.classList.add('yt-ready');
+    };
+    tag.src = "https://www.youtube.com/iframe_api";
+
+
+  };
 
   $window.player = {};
   $window.onYouTubeIframeAPIReady = function () {
@@ -113,9 +142,6 @@ pjlongApp.controller('rwbyCtrl', ['$scope', '$window', 'Page', function ($scope,
         }
       );
     }
-
-    var rwbyApp = document.getElementById('rwby-trailer');
-    rwbyApp.classList.add('yt-ready');
   };
 
   $window.onPlayerStateChange = function(event) {

@@ -1,8 +1,13 @@
+@import url('http://fonts.googleapis.com/css?family=Merriweather');
+@import url('http://fonts.googleapis.com/css?family=Raleway');
+
 @menu-bar-height: 3rem;
-@menu-bar-color: #222;
+@menu-bar-color: transparent;//#222;
+@menu-active-color: #4e6cef;
 
+@main-bg-color: #fff;
 
-html {
+/*html {
   padding: 0;
   margin: 0;
   height: 100%;
@@ -18,39 +23,66 @@ body {
 
   background: linear-gradient(#ccc, #ddd);
   box-sizing: border-box;
+}*/
+
+html, body {
+  margin: 0;
+  height: 100%;
 }
 
 .menu-bar {
-  background: linear-gradient(@menu-bar-color, transparent);
+
+  //background: linear-gradient(@menu-bar-color, transparent);
+  background: @menu-bar-color;
+  //box-shadow: 0 4px 8px rgba(0,0,0, .75);
   height: @menu-bar-height;
   width: 100%;
-  position: relative;
+  position: fixed;
   top: 0;
+  z-index: 1000;
+  padding-bottom: 3px;
 
   ul {
     background-color: transparent;
     box-sizing: border-box;
     display: flex;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+
+    justify-content: center;
+    text-align: right;
     line-height: @menu-bar-height;
     margin: 0;
-    transition: background-color .25s ease;
+    transition: background-color .15s ease;
 
-    &:hover {
+    /*&:hover {
       background-color: @menu-bar-color;
       transition: background-color .25s ease;      
-    }
+    }*/
 
     li {
+      border-top: 2px solid transparent;
       display: inline-block;
       float: left;
       list-style: none;
       white-space: normal;
 
+      &.active {
+        border-color: @menu-active-color;
+        color: @menu-active-color;
+        transition: color .2s, border-color .2s;
+
+        a {
+          color: @menu-active-color;
+        }
+      }
+
       a {
-        color: #ccc;
+        color: #aaa;        
         display: inline-block;
         padding: 0 1rem;
         text-decoration: none;
+        height: 100%;
+        transition: color .2s, border-color .2s;
 
         &:hover {
           background-color: rgba(200, 200, 200, 0.25);
@@ -64,14 +96,82 @@ body {
   }
 }
 
-section {
-  position: relative;
+section.main {
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
+  position: absolute;
+  top: @menu-bar-height;
   color: #888;
-  padding: 1rem 4rem;
+  padding: 0 10%;
+  padding-top: 2%;
+}
+
+.background {
+  background-image: url(../../media/img/main_bg_1.jpg);
+  background-size: cover;
+  filter: grayscale(0%) blur(10px);
+  position: fixed;
+  width: 102%;
+  height: 102%;
+  top: -1%;
+  left: -1%;
+  z-index: 0;
+}
+
+
+@btn-color: #546e7a;
+@btn-text: #cfd8dc;
+
+a.pj-btn {
+  //background-color: @btn-color;
+  background: linear-gradient(#ddd 75%, #ccc);
+  //border: 1px solid #333;
+  border-radius: 4px;
+  box-sizing: border-box;
+  //color: @btn-text;
+  color: #666;
+  padding: .5rem 1rem;
+  text-decoration: none;
+  //text-shadow: #333 0 0 1px;
+
+
+  &:hover {
+    background: linear-gradient(#ccc 75%, #ddd);//lighten(@btn-color, 10%);
+  }
+}
+
+a.self {
+  &:before {
+    content: attr(href);
+  }
+}
+
+a.download,
+button.download,
+input[type="button"].download {
+  padding-left: 2rem;
+  color: #555;
+
+  .download {
+    fill: #555;
+    position: absolute;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-top: -.25rem;
+    margin-left: -1.75rem;
+  }
+}
+
+.pull-left {
+  clear: both;
+  float: left;
+}
+
+.pull-right {
+  clear: both;
+  float: right;
 }
 
 @import "grid.less";
+@import "resume.less";
 @import "rwby.less";

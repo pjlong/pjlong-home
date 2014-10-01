@@ -1,9 +1,10 @@
 import os
-from bottle import Bottle, route, run, static_file
+from bottle import Bottle, route, run, request, static_file
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, 'templates')
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 BOWER_ROOT = os.path.join(PROJECT_ROOT, 'bower_components')
 
 app = application = Bottle()
@@ -28,5 +29,18 @@ def static(filename):
 	#only in dev
 	return static_file(filename, root=STATIC_ROOT)
 
+@app.route('/media/<filename>')
+def media(filename):
+	#only in dev
+
+	if request.query.d == 1:
+		return static_file(filename, root=MEDIA_ROOT, download=filename)
+	return static_file(filename, root=MEDIA_ROOT)
+
+
+@app.route('/media/img/<filename:path>')
+def img(filename):
+	return static_file(filename, root=os.path.join(MEDIA_ROOT, 'img'))
+
 if __name__ == '__main__':
-	run(app=app, host='0.0.0.0', port=8080)
+	run(app=app, host='0.0.0.0', port=8080, reloader=True, debug=True)

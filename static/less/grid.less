@@ -3,10 +3,9 @@
 .col {
 	display: block;
 	float: left;
-	margin: 1% 0;
-	margin-left: @grid-margin;
+	margin: 1% @grid-margin/2;
 	box-sizing: border-box;
-	padding-left: 1rem;
+	//padding-left: 1rem;
 }
 
 .span_1_of_1,
@@ -53,7 +52,7 @@
 	width: 100% * 2/3 - @grid-margin;
 }
 
-.span_3_of_4 
+.span_3_of_4, 
 .span_6_of_8 {
 	width: 100% * 3/4 - @grid-margin;
 }
@@ -123,3 +122,8 @@
 	width: 100% * 8/9 - @grid-margin;
 }
 
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+	
+}

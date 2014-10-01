@@ -58,6 +58,7 @@
 }
 .panel.active .back .player-wrapper {
   opacity: 1;
+  height: 100%;
   -webkit-transition: 1.25s opacity ease-in;
   transition: 1.25s opacity ease-in;
 }
