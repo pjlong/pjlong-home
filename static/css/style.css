@@ -23,7 +23,8 @@ body {
   height: 100%;
 }
 .menu-bar {
-  background: transparent;
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.33), rgba(255, 255, 255, 0));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.33), rgba(255, 255, 255, 0));
   height: 3rem;
   width: 100%;
   position: fixed;
@@ -35,12 +36,10 @@ body {
   background-color: transparent;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-  -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -85,6 +84,20 @@ body {
   -webkit-transition: all .2s ease;
   transition: all .2s ease;
 }
+.menu-bar.headroom.headroom--pinned {
+  top: 0;
+  box-shadow: 2px 0 5px rgba(50, 50, 50, 0.7);
+  -webkit-transition: all .25s ease;
+  transition: all .25s ease;
+}
+.menu-bar.headroom.headroom--unpinned {
+  top: -3rem;
+  -webkit-transition: top .25s ease;
+  transition: top .25s ease;
+}
+.menu-bar.headroom.headroom--not-top {
+  background-color: #fff;
+}
 section.main {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -92,7 +105,6 @@ section.main {
   position: absolute;
   top: 3rem;
   color: #888;
-  padding: 0 10%;
   padding-top: 2%;
 }
 .background {
@@ -256,10 +268,55 @@ input[type="button"].download .download {
 .span_8_of_9 {
   width: 87.38888889%;
 }
+.font-normal {
+  font-size: 1rem;
+}
+.font-small {
+  font-size: .9rem;
+}
+.font-smaller {
+  font-size: .75rem;
+}
+ul.columns-2 {
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  columns: 2;
+}
 .wrapper {
-  width: 90%;
+  display: block;
   height: 100%;
+  width: 75%;
   margin: 6rem auto;
+}
+header.resume {
+  width: 100%;
+  background-color: #0277bd;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: Merriweather;
+  padding: 1rem 15%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+header.resume .header-name {
+  font-weight: bold;
+  font-size: 5rem;
+  text-shadow: 1px 1px 2px #000;
+}
+header.resume #linkedin {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  padding: .25rem;
+}
+header.resume #linkedin .linkedin-pos {
+  fill: #fff;
+  width: 2rem;
+  height: 2rem;
 }
 #pjlong-resume {
   box-shadow: 0 0 10px #555;
@@ -267,10 +324,10 @@ input[type="button"].download .download {
   box-sizing: border-box;
   color: #333;
   display: inline-block;
-  font-family: Raleway;
-  font-size: 1.25rem;
   width: 100%;
   padding: 2rem 1rem;
+  font-family: Raleway;
+  font-size: 1rem;
 }
 #pjlong-resume header {
   width: 100%;
@@ -325,42 +382,8 @@ input[type="button"].download .download {
   font-weight: normal;
   color: #999;
 }
-#pjlong-resume .minor {
-  font-size: .9rem;
-  color: #333;
-}
 #pjlong-resume hr {
   margin: 0;
-}
-header.resume {
-  width: 100%;
-  background-color: #0277bd;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  color: #fff;
-  font-family: Merriweather;
-  padding: 1rem 20%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-header.resume .header-name {
-  font-weight: bold;
-  font-size: 5rem;
-  text-shadow: 1px 1px 2px #000;
-}
-header.resume #linkedin {
-  border: 1px solid #fff;
-  border-radius: 5px;
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  padding: .25rem;
-}
-header.resume #linkedin .linkedin-pos {
-  fill: #fff;
-  width: 2rem;
-  height: 2rem;
 }
 .plain-text {
   font-style: normal;
@@ -580,13 +603,15 @@ header.resume #linkedin .linkedin-pos {
 }
 .backgrounds {
   position: fixed;
+  background: -webkit-radial-gradient(50% 0%, circle, #000000, #232323);
+  background: radial-gradient(circle at 50% 0%, #000000, #232323);
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   z-index: -1;
 }
-.emblem {
+.backgrounds .emblem {
   opacity: 0;
   width: 100%;
   height: 100%;
@@ -594,7 +619,7 @@ header.resume #linkedin .linkedin-pos {
   -webkit-transition: .5s opacity;
   transition: .5s opacity;
 }
-.emblem:after {
+.backgrounds .emblem:after {
   content: "Original Artist: u/Blob-Monster";
   color: #fff;
   text-shadow: 0 0 2px #000;
@@ -602,27 +627,27 @@ header.resume #linkedin .linkedin-pos {
   bottom: 1%;
   right: 1%;
 }
-.emblem.active {
+.backgrounds .emblem.active {
   opacity: 1;
   -webkit-transition: 0.5s opacity 1.25s;
   transition: 0.5s opacity 1.25s;
 }
-.emblem.ruby {
+.backgrounds .emblem.ruby {
   background: url(http://i.imgur.com/K0M3ykU.jpg) no-repeat;
   background-size: cover;
   background-position: center center;
 }
-.emblem.weiss {
+.backgrounds .emblem.weiss {
   background: url(http://i.imgur.com/owwMIkJ.jpg) no-repeat;
   background-size: cover;
   background-position: center center;
 }
-.emblem.blake {
+.backgrounds .emblem.blake {
   background: url(http://i.imgur.com/qXHN6PA.jpg) no-repeat;
   background-size: cover;
   background-position: center center;
 }
-.emblem.yang {
+.backgrounds .emblem.yang {
   background: url(http://i.imgur.com/dWwPTeZ.jpg) no-repeat;
   background-size: cover;
   background-position: center center;

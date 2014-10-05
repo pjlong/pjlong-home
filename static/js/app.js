@@ -1,4 +1,4 @@
-var pjlongApp = angular.module('pjlongApp', ['ngRoute', 'pjlongApp.controllers']);
+var pjlongApp = angular.module('pjlongApp', ['ngRoute', 'headroom', 'pjlongApp.controllers']);
 
 pjlongApp.config(['$routeProvider', '$locationProvider',
 	function ($routeProvider, $locationProvider) {

@@ -1,19 +1,76 @@
+.content-font() {
+  font-family: Raleway;
+  font-size: 1rem;
+}
+
+.font-normal {
+  font-size: 1rem;
+}
+
+.font-small {
+  font-size: .9rem;
+}
+
+.font-smaller {
+  font-size: .75rem;
+}
+
+ul.columns-2 {
+  columns: 2;
+}
+
 .wrapper {
-  width: 90%;
+  display: block;
   height: 100%;
+  width: 75%;
   margin: 6rem auto;
 }
+
+
+header.resume {
+  width: 100%;
+  background-color: #0277bd;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: Merriweather;
+  padding: 1rem 15%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .header-name {
+    font-weight: bold;
+    font-size: 5rem;
+    text-shadow: 1px 1px 2px #000;
+
+  }
+
+  #linkedin {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    padding: .25rem;
+
+    .linkedin-pos {
+      fill: #fff;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
+
 
 #pjlong-resume {
   box-shadow: 0 0 10px #555;
   box-sizing: border-box;
   color: #333;
   display: inline-block;
-  font-family: Raleway;
-  font-size: 1.25rem;
   width: 100%;
   padding: 2rem 1rem;
-
+  
+  .content-font;
 
   header {
     width: 100%;
@@ -86,47 +143,8 @@
     }
   }
 
-  .minor {
-    font-size: .9rem;
-    color: #333;
-  }
-
   hr {
     margin: 0;
-  }
-}
-
-header.resume {
-  width: 100%;
-  background-color: #0277bd;
-  box-sizing: border-box;
-  color: #fff;
-  font-family: Merriweather;
-  padding: 1rem 20%;
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  .header-name {
-    font-weight: bold;
-    font-size: 5rem;
-    text-shadow: 1px 1px 2px #000;
-
-  }
-
-  #linkedin {
-    border: 1px solid #fff;
-    border-radius: 5px;
-    display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    padding: .25rem;
-
-    .linkedin-pos {
-      fill: #fff;
-      width: 2rem;
-      height: 2rem;
-    }
   }
 }
 

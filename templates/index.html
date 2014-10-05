@@ -8,6 +8,8 @@
 	<!--<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>-->
 	<script src="./bower_components/angular/angular.min.js"></script>
 	<script src="./bower_components/angular-route/angular-route.min.js"></script>
+	<script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+	<script src="//cdn.jsdelivr.net/headroomjs/0.5.0/angular.headroom.min.js"></script>
 
 	<title data-ng-bind="Page.title()"></title>
 </head>
@@ -15,11 +17,11 @@
 	<!--[if lt IE 8]>
 		<p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
-
-	<header class="menu-bar" data-ng-controller="menuCtrl">
+	
+	<header class="menu-bar" data-ng-controller="menuCtrl" data-headroom>
 		<nav>		
 			<ul>
-			<li data-ng-repeat="item in items" data-ng-class="{active: isActive(item.url)}">
+			<li data-ng-repeat="item in items" data-ng-class="{active: isActive(item.url)}" data-theme>
 				<a href="{{ item.url }}"> {{item.name}}</a>
 			</li>
 			</ul>

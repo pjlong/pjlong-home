@@ -31,9 +31,11 @@ html, body {
 }
 
 .menu-bar {
-
+  background: linear-gradient(to bottom, 
+    rgba(255, 255, 255, .33),
+    rgba(255, 255, 255, 0));
   //background: linear-gradient(@menu-bar-color, transparent);
-  background: @menu-bar-color;
+  //background: @menu-bar-color;
   //box-shadow: 0 4px 8px rgba(0,0,0, .75);
   height: @menu-bar-height;
   width: 100%;
@@ -94,6 +96,25 @@ html, body {
       }
     }
   }
+
+  &.headroom {
+    &.headroom--pinned {
+      top: 0;
+      box-shadow: 2px 0 5px rgba(50, 50 ,50, .7);
+      transition: all .25s ease;
+
+    }
+
+    &.headroom--unpinned {
+      top: -@menu-bar-height;
+
+      transition: top .25s ease;
+    }
+
+    &.headroom--not-top {
+      background-color: #fff;
+    }
+  }
 }
 
 section.main {
@@ -102,7 +123,7 @@ section.main {
   position: absolute;
   top: @menu-bar-height;
   color: #888;
-  padding: 0 10%;
+  //padding: 0 10%;
   padding-top: 2%;
 }
 
