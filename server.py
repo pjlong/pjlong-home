@@ -19,6 +19,18 @@ def home():
 def template(filename):
 	return static_file(filename, root=TEMPLATE_ROOT)
 
+@app.route('/sendhub')
+def sendhub():
+	return static_file('index.html', root=os.path.join(PROJECT_ROOT, '../sendhub-app/templates/'), mimetype='text/html') 
+
+@app.route('/sendhub/static/js/app.js')
+def sendhub_js():
+	return static_file('app.js', root=os.path.join(PROJECT_ROOT, '../sendhub-app/static/js/'))
+
+@app.route('/sendhub/static/css/style.css')
+def sendhub_css():
+	return static_file('style.css', root=os.path.join(PROJECT_ROOT, '../sendhub-app/static/css/'))
+
 @app.route('/bower_components/<filename:path>')
 def bower_components(filename):
 	#used in dev
