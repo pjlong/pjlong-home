@@ -1,11 +1,11 @@
 @import url('http://fonts.googleapis.com/css?family=Merriweather');
 @import url('http://fonts.googleapis.com/css?family=Raleway');
 
-@menu-bar-height: 3rem;
-@menu-bar-color: transparent;//#222;
-@menu-active-color: #4e6cef;
+$menu-bar-height: 3rem;
+$menu-bar-color: transparent;//#222;
+$menu-active-color: #4e6cef;
 
-@main-bg-color: #fff;
+$main-bg-color: #fff;
 
 /*html {
   padding: 0;
@@ -34,10 +34,10 @@ html, body {
   background: linear-gradient(to bottom, 
     rgba(255, 255, 255, .33),
     rgba(255, 255, 255, 0));
-  //background: linear-gradient(@menu-bar-color, transparent);
+  //background: linear-gradient($menu-bar-color, transparent);
   //background: @menu-bar-color;
   //box-shadow: 0 4px 8px rgba(0,0,0, .75);
-  height: @menu-bar-height;
+  height: $menu-bar-height;
   width: 100%;
   position: fixed;
   top: 0;
@@ -52,12 +52,12 @@ html, body {
 
     justify-content: center;
     text-align: right;
-    line-height: @menu-bar-height;
+    line-height: $menu-bar-height;
     margin: 0;
     transition: background-color .15s ease;
 
     /*&:hover {
-      background-color: @menu-bar-color;
+      background-color: $menu-bar-color;
       transition: background-color .25s ease;      
     }*/
 
@@ -69,12 +69,12 @@ html, body {
       white-space: normal;
 
       &.active {
-        border-color: @menu-active-color;
-        color: @menu-active-color;
+        border-color: $menu-active-color;
+        color: $menu-active-color;
         transition: color .2s, border-color .2s;
 
         a {
-          color: @menu-active-color;
+          color: $menu-active-color;
         }
       }
 
@@ -98,21 +98,19 @@ html, body {
   }
 
   &.headroom {
-    &.headroom--pinned {
-      top: 0;
-      box-shadow: 2px 0 5px rgba(50, 50 ,50, .7);
-      transition: all .25s ease;
-
-    }
-
-    &.headroom--unpinned {
-      top: -@menu-bar-height;
-
-      transition: top .25s ease;
-    }
-
     &.headroom--not-top {
       background-color: #fff;
+
+      &.headroom--pinned {
+        top: 0;
+        box-shadow: 2px 0 5px rgba(50, 50 ,50, .7);
+        transition: all .25s ease;
+      }
+
+      &.headroom--unpinned {
+        top: -$menu-bar-height;
+        transition: all .25s ease;
+      }
     }
   }
 }
@@ -121,10 +119,10 @@ section.main {
   box-sizing: border-box;
   width: 100%;
   position: absolute;
-  top: @menu-bar-height;
+  top: $menu-bar-height;
   color: #888;
   //padding: 0 10%;
-  padding-top: 2%;
+  padding-top: 5%;
 }
 
 .background {
@@ -140,24 +138,21 @@ section.main {
 }
 
 
-@btn-color: #546e7a;
-@btn-text: #cfd8dc;
+$btn-color: #546e7a;
+$btn-text: #cfd8dc;
 
 a.pj-btn {
-  //background-color: @btn-color;
   background: linear-gradient(#ddd 75%, #ccc);
-  //border: 1px solid #333;
   border-radius: 4px;
   box-sizing: border-box;
-  //color: @btn-text;
   color: #666;
+  display: inline-block;
   padding: .5rem 1rem;
   text-decoration: none;
-  //text-shadow: #333 0 0 1px;
-
 
   &:hover {
-    background: linear-gradient(#ccc 75%, #ddd);//lighten(@btn-color, 10%);
+    background: linear-gradient(#ccc 75%, #ddd);//lighten($btn-color, 10%);
+    color: #333;
   }
 }
 
@@ -180,19 +175,14 @@ input[type="button"].download {
     height: 1.75rem;
     margin-top: -.25rem;
     margin-left: -1.75rem;
+
+  }
+
+  &:hover .download {
+    fill: #333;
   }
 }
 
-.pull-left {
-  clear: both;
-  float: left;
-}
 
-.pull-right {
-  clear: both;
-  float: right;
-}
-
-@import "grid.less";
-@import "resume.less";
-@import "rwby.less";
+@import "resume";
+//@import "rwby";

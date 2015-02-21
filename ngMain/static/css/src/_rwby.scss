@@ -1,60 +1,60 @@
-@window-width: 640px;
-@window-height: 360px;
+$window-width: 640px;
+$window-height: 360px;
 
-@panel-width: @window-width/4;
-@panel-height: @window-height;
+$panel-width: $window-width/4;
+$panel-height: $window-height;
 
-@char-width: 11rem;
-@char-height: 22rem;
+$char-width: 11rem;
+$char-height: 22rem;
 
 
 /* Shadows */
-@ruby-back-gradient: linear-gradient(rgb(72,0,0), rgb(155,9,20));
-@ruby-shadow-inner: 0 0 10px 5px #f00;
-@ruby-shadow-outer: 0 0 40px 10px #301;
+$ruby-back-gradient: linear-gradient(rgb(72,0,0), rgb(155,9,20));
+$ruby-shadow-inner: 0 0 10px 5px #f00;
+$ruby-shadow-outer: 0 0 40px 10px #301;
 
 .ruby_shadow() {
-  box-shadow: @ruby-shadow-inner, @ruby-shadow-outer;
+  box-shadow: $ruby-shadow-inner, $ruby-shadow-outer;
 }
 .ruby_shadow_inset() {
-  box-shadow: inset @ruby-shadow-inner, inset @ruby-shadow-outer;
+  box-shadow: inset $ruby-shadow-inner, inset $ruby-shadow-outer;
 }
 
-@weiss-back-gradient: linear-gradient(rgb(160,160,160), rgb(185,218,253));
-@weiss-shadow-inner: 0 0 10px 5px #fff;
-@weiss-shadow-outer: 0 0 40px 10px #99f;
+$weiss-back-gradient: linear-gradient(rgb(160,160,160), rgb(185,218,253));
+$weiss-shadow-inner: 0 0 10px 5px #fff;
+$weiss-shadow-outer: 0 0 40px 10px #99f;
 
 .weiss_shadow() {
-  box-shadow: @weiss-shadow-inner, @weiss-shadow-outer;
+  box-shadow: $weiss-shadow-inner, $weiss-shadow-outer;
 }
 
 .weiss_shadow_inset() {
-  box-shadow: inset @weiss-shadow-inner, inset @weiss-shadow-outer;
+  box-shadow: inset $weiss-shadow-inner, inset $weiss-shadow-outer;
 }
 
-@blake-back-gradient: linear-gradient(rgb(76,76,76), rgb(11,11,11));
-@blake-shadow-inner: 0 0 10px 5px #000;
-@blake-shadow-outer: 0 0 40px 10px #204;
+$blake-back-gradient: linear-gradient(rgb(76,76,76), rgb(11,11,11));
+$blake-shadow-inner: 0 0 10px 5px #000;
+$blake-shadow-outer: 0 0 40px 10px #204;
 .blake_shadow() {
-  box-shadow: @blake-shadow-inner, @blake-shadow-outer;
+  box-shadow: $blake-shadow-inner, $blake-shadow-outer;
 }
 .blake_shadow_inset() {
-  box-shadow: inset @blake-shadow-inner, inset @blake-shadow-outer;
+  box-shadow: inset $blake-shadow-inner, inset $blake-shadow-outer;
 }
 
-@yang-back-gradient: linear-gradient(rgb(140, 130, 0), rgb(105,90,0) );
-@yang-shadow-inner: 0 0 10px 7px #ff0;
-@yang-shadow-outer: 0 0 40px 10px #f90;
+$yang-back-gradient: linear-gradient(rgb(140, 130, 0), rgb(105,90,0) );
+$yang-shadow-inner: 0 0 10px 7px #ff0;
+$yang-shadow-outer: 0 0 40px 10px #f90;
 .yang_shadow() {
-  box-shadow: @yang-shadow-inner, @yang-shadow-outer;
+  box-shadow: $yang-shadow-inner, $yang-shadow-outer;
 }
 .yang_shadow_inset() {
-  box-shadow: inset @yang-shadow-inner, inset @yang-shadow-outer;
+  box-shadow: inset $yang-shadow-inner, inset $yang-shadow-outer;
 }
 
 /* Transition Timing */
-@panel-flip-time: .5s;
-@panel-stretch-time: .75s;
+$panel-flip-time: .5s;
+$panel-stretch-time: .75s;
 
 
 #rwby-trailer {
@@ -69,25 +69,25 @@
 .rwby-wrapper {
   background-color: #000;
   position: relative;
-  width: @window-width;
-  height: @window-height;
+  width: $window-width;
+  height: $window-height;
   margin: 0 auto;
   z-index: 0;
 }
 
 .panel {
-  width: @panel-width;
-  height: @panel-height;
+  width: $panel-width;
+  height: $panel-height;
   
   display: inline-block;
   position: absolute;
   transform-style: preserve-3d;
   perspective: 100px;
   z-index: 0;
-  transition: transform @panel-flip-time ease-out @panel-stretch-time,
-              width @panel-stretch-time ease-in,
-              left @panel-stretch-time ease-in,
-              z-index 0s @panel-flip-time + @panel-stretch-time;
+  transition: transform $panel-flip-time ease-out $panel-stretch-time,
+              width $panel-stretch-time ease-in,
+              left $panel-stretch-time ease-in,
+              z-index 0s $panel-flip-time + $panel-stretch-time;
   
   &:hover {
     z-index: 10;
@@ -96,12 +96,12 @@
   }
 
   &.active {
-    width: @window-width;
+    width: $window-width;
     border-width: 0;
     z-index: 100;
-    transition: transform @panel-flip-time ease-in,
-                width @panel-stretch-time ease-in @panel-flip-time,
-                left @panel-stretch-time ease-in @panel-flip-time;
+    transition: transform $panel-flip-time ease-in,
+                width $panel-stretch-time ease-in $panel-flip-time,
+                left $panel-stretch-time ease-in $panel-flip-time;
 
     &.one,
     &.two,
@@ -116,18 +116,18 @@
 
     .back {
       background-color: #000;
-      transition: box-shadow .5s ease @panel-flip-time + @panel-stretch-time,
-        background-color @panel-flip-time + @panel-stretch-time;
+      transition: box-shadow .5s ease $panel-flip-time + $panel-stretch-time,
+        background-color $panel-flip-time + $panel-stretch-time;
 
       .player-wrapper {
         opacity: 1;
         height: 100%;
-        transition: @panel-flip-time + @panel-stretch-time opacity ease-in;
+        transition: $panel-flip-time + $panel-stretch-time opacity ease-in;
       }
 
       .player {
         opacity: 1;
-        transition: .25s opacity @panel-flip-time + @panel-stretch-time;
+        transition: .25s opacity $panel-flip-time + $panel-stretch-time;
       }
     }
   }
@@ -140,8 +140,8 @@
   }
   
   .front {
-    width: @panel-width ;
-    height: @panel-height;
+    width: $panel-width ;
+    height: $panel-height;
     border: .625rem solid transparent;
     box-sizing: border-box;
     transition: .25s all;
@@ -163,7 +163,7 @@
     .player-wrapper{
       opacity: 0;
       background-color: #000;
-      transition: @panel-flip-time + @panel-stretch-time opacity ease-out;
+      transition: $panel-flip-time + $panel-stretch-time opacity ease-out;
     }
 
     .player {
@@ -186,7 +186,7 @@
     }
 
     .back {
-      background: @ruby-back-gradient;
+      background: $ruby-back-gradient;
     }
 
     &.active {
@@ -199,7 +199,7 @@
   }
   
   &.two {
-    left: @panel-width;
+    left: $panel-width;
 
     .front{
       background: url(http://img2.wikia.nocookie.net/__cb20130701122719/rwby/images/thumb/3/33/WeissReveal.png/197px-WeissReveal.png);
@@ -212,7 +212,7 @@
     }
 
     .back {
-      background: @weiss-back-gradient;
+      background: $weiss-back-gradient;
     }
 
     &.active {
@@ -225,7 +225,7 @@
   }
   
   &.three {
-    left: 2*@panel-width;
+    left: 2*$panel-width;
     
     .front{
       background: url(http://img2.wikia.nocookie.net/__cb20130701122712/rwby/images/thumb/6/69/BlakeReveal.png/197px-BlakeReveal.png);
@@ -238,7 +238,7 @@
     }
 
     .back {
-      background: @blake-back-gradient;
+      background: $blake-back-gradient;
     }
 
     &.active {
@@ -250,7 +250,7 @@
   }
   
   &.four {
-    left: 3*@panel-width;
+    left: 3*$panel-width;
 
     .front{
       background: url(http://img2.wikia.nocookie.net/__cb20130701122051/rwby/images/thumb/0/09/YangReveal.png/197px-YangReveal.png);
@@ -263,7 +263,7 @@
     }
 
     .back {
-      background: @yang-back-gradient;
+      background: $yang-back-gradient;
     }
 
     &.active {
@@ -302,7 +302,7 @@
 
     &.active {
       opacity: 1;
-      transition: .5s opacity @panel-flip-time + @panel-stretch-time
+      transition: .5s opacity $panel-flip-time + $panel-stretch-time
     }
 
     &.ruby {

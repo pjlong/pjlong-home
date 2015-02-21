@@ -1,35 +1,43 @@
+{% load static %}
 <!DOCTYPE html>
-<html class="no-js" lang="" data-ng-app="pjlongApp"  ng-controller="titleCtrl">
+<html class="no-js" lang="" ng-app="pjlongApp"  ng-controller="titleCtrl">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" href="./bower_components/normalize-css/normalize.css">
-	<link rel="stylesheet" href="./static/css/style.css"/>
-	<!--<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>-->
-	<script src="./bower_components/angular/angular.min.js"></script>
-	<script src="./bower_components/angular-route/angular-route.min.js"></script>
-	<script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
-	<script src="//cdn.jsdelivr.net/headroomjs/0.5.0/angular.headroom.min.js"></script>
+	<base href="/">
 
-	<title data-ng-bind="Page.title()"></title>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css">
+	<link rel="stylesheet" href="{% static 'css/libs/flipclock.css' %}"></script>
+	<link rel="stylesheet" href="{% static 'css/dist/style.css' %}"/>
+
+	<title ng-bind="Page.title()"></title>
 </head>
 <body>
 	<!--[if lt IE 8]>
 		<p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
 	
-	<header class="menu-bar" data-ng-controller="menuCtrl" data-headroom>
-		<nav>		
+	{% verbatim %}
+	<headroom class="menu-bar" tolerance="10">
+		<nav ng-controller="menuCtrl">		
 			<ul>
-			<li data-ng-repeat="item in items" data-ng-class="{active: isActive(item.url)}" data-theme>
+			<li ng-repeat="item in items" ng-class="{active: isActive(item.url)}" data-theme>
 				<a href="{{ item.url }}"> {{item.name}}</a>
 			</li>
 			</ul>
 		</nav>
-	</header>
+	</headroom>
+	{% endverbatim %}
 
-	<section data-ng-view="" class="main"></section>
-	<script src="./static/js/app.js" ></script>
-	<script src="./static/js/controllers.js" ></script>
+	<div ng-view role="main"></div>
+
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-route.min.js"></script>
+	<script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+	<script src="//cdn.jsdelivr.net/headroomjs/0.5.0/angular.headroom.min.js"></script>
+	<script src="{% static 'js/libs/flipclock.min.js' %}"></script>
+	<script src="{% static 'js/dist/pjlong.js' %}" ></script>
 </body>
 </html>

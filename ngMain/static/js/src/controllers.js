@@ -45,7 +45,7 @@ angular.module('pjlongApp.controllers').controller('resumeCtrl', ['$scope', 'Pag
   $scope.header = {
     name: "PHILLIP LONG",
     address: "11606 Cedar Spring Ct. Cupertino, CA 95014",
-    link: "linkedin.com/in/pjlong",
+    link: "https://linkedin.com/in/phlong",
     email: "phil.long.09@gmail.com",
     phone: "(408) 899-9021"
   };

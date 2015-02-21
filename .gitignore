@@ -56,3 +56,6 @@ target/
 #node
 node_modules/
 bower_componenents/
+
+# OSX stuff
+.DS_Store

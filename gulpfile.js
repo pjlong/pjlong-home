@@ -1,29 +1,45 @@
 var gulp = require('gulp');
-var less = require('gulp-less');
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+var concat = require('gulp-concat');
 var autoprefixer = require('gulp-autoprefixer');
-var path = require('path');
 
 var paths = {
-  home: './',
-  less: './static/less/*.less',
-  css: './static/css/'
+  css: {
+    src: './ngMain/static/css/src/',
+    dist: './ngMain/static/css/dist/',
+    libs:'./ngMain/static/css/libs/'
+  },
+  js: {
+    src: 'ngMain/static/js/src/',
+    dist: 'ngMain/static/js/dist/',
+    libs: 'ngMain/static/js/libs/'
+  }
 };
 
-gulp.task('less', function () {
-  gulp.src(paths.less)
-    .pipe(less({
-      paths: [path.join(__dirname, 'less', 'includes')]
-    }))
+gulp.task('sass', function () {
+  return gulp.src(paths.css.src+'**/*.scss')
+    .pipe(sass())
     .pipe(autoprefixer({
       browers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(gulp.dest(paths.css));
+    .pipe(gulp.dest(paths.css.dist));
+});
+
+
+gulp.task('js', function () {
+  return gulp.src(paths.js.src+'**/*.js')
+    .pipe(sourcemaps.init())
+    .pipe(concat('pjlong.js'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(paths.js.dist));
 });
 
 
 gulp.task('watch', function () {
-  gulp.watch(paths.less, ['less']);
+  gulp.watch(paths.css.src+'**/*.scss', ['sass']);
+  gulp.watch(paths.js.src+'**/*.js', ['js']);
 });
 
-gulp.task('default', ['less', 'prefix']);
+gulp.task('default', ['sass', 'js']);

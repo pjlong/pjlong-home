@@ -1,19 +1,23 @@
-var pjlongApp = angular.module('pjlongApp', ['ngRoute', 'headroom', 'pjlongApp.controllers']);
+var pjlongApp = angular.module('pjlongApp', ['ngRoute', 'headroom', 'pjlongApp.controllers', 'picnicDay']);
 
 pjlongApp.config(['$routeProvider', '$locationProvider',
 	function ($routeProvider, $locationProvider) {
 		$routeProvider
       .when('/', {
-        templateUrl: '/templates/home.html',
+        templateUrl: '/ng/home',
         controller: 'homeCtrl'
       })
       .when('/resume', {
-      	templateUrl: '/templates/resume.html',
+      	templateUrl: '/ng/resume',
       	controller: 'resumeCtrl'
       })
       .when('/rwby', {
-        templateUrl: '/templates/rwby.html',
+        templateUrl: '/ng/rwby',
         controller: 'rwbyCtrl'
+      })
+      .when('/pd', {
+        templateUrl: '/ng/pd',
+        controller: 'picnicDayCtrl'
       })
       .otherwise({
         redirectTo: '/'
