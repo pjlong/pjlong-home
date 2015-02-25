@@ -1,11 +1,11 @@
-@import url('http://fonts.googleapis.com/css?family=Merriweather');
-@import url('http://fonts.googleapis.com/css?family=Raleway');
+@import url(http://fonts.googleapis.com/css?family=Merriweather);
+@import url(http://fonts.googleapis.com/css?family=Raleway);
 
-$menu-bar-height: 3rem;
-$menu-bar-color: transparent;//#222;
-$menu-active-color: #4e6cef;
+$menuBarHeight: 3rem;
+$menuBarColor: transparent;//#222;
+$menuActiveColor: #4e6cef;
 
-$main-bg-color: #fff;
+$mainBgColor: #fff;
 
 /*html {
   padding: 0;
@@ -34,10 +34,10 @@ html, body {
   background: linear-gradient(to bottom, 
     rgba(255, 255, 255, .33),
     rgba(255, 255, 255, 0));
-  //background: linear-gradient($menu-bar-color, transparent);
+  //background: linear-gradient($menuBarColor, transparent);
   //background: @menu-bar-color;
   //box-shadow: 0 4px 8px rgba(0,0,0, .75);
-  height: $menu-bar-height;
+  height: $menuBarHeight;
   width: 100%;
   position: fixed;
   top: 0;
@@ -52,12 +52,12 @@ html, body {
 
     justify-content: center;
     text-align: right;
-    line-height: $menu-bar-height;
+    line-height: $menuBarHeight;
     margin: 0;
     transition: background-color .15s ease;
 
     /*&:hover {
-      background-color: $menu-bar-color;
+      background-color: $menuBarColor;
       transition: background-color .25s ease;      
     }*/
 
@@ -69,12 +69,12 @@ html, body {
       white-space: normal;
 
       &.active {
-        border-color: $menu-active-color;
-        color: $menu-active-color;
+        border-color: $menuActiveColor;
+        color: $menuActiveColor;
         transition: color .2s, border-color .2s;
 
         a {
-          color: $menu-active-color;
+          color: $menuActiveColor;
         }
       }
 
@@ -108,7 +108,7 @@ html, body {
       }
 
       &.headroom--unpinned {
-        top: -$menu-bar-height;
+        top: -$menuBarHeight;
         transition: all .25s ease;
       }
     }
@@ -119,7 +119,7 @@ section.main {
   box-sizing: border-box;
   width: 100%;
   position: absolute;
-  top: $menu-bar-height;
+  top: $menuBarHeight;
   color: #888;
   //padding: 0 10%;
   padding-top: 5%;
@@ -138,8 +138,8 @@ section.main {
 }
 
 
-$btn-color: #546e7a;
-$btn-text: #cfd8dc;
+$btnColor: #546e7a;
+$btnText: #cfd8dc;
 
 a.pj-btn {
   background: linear-gradient(#ddd 75%, #ccc);
@@ -151,7 +151,7 @@ a.pj-btn {
   text-decoration: none;
 
   &:hover {
-    background: linear-gradient(#ccc 75%, #ddd);//lighten($btn-color, 10%);
+    background: linear-gradient(#ccc 75%, #ddd);//lighten($btnColor, 10%);
     color: #333;
   }
 }
@@ -185,4 +185,4 @@ input[type="button"].download {
 
 
 @import "resume";
-//@import "rwby";
+@import "rwby";
