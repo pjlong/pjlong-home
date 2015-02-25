@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for pjlong_home project.
 
@@ -10,6 +11,10 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from secret import DB
+
+gettext = lambda s: s
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -29,17 +34,35 @@ ALLOWED_HOSTS = [
     'localhost:8080'
 ]
 
+SITE_ID = 1
 
 # Application definition
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
-    'ngMain'
+    'django_extensions',
+    'cms',  
+    'mptt', 
+    'menus',
+    'sekizai',
+    'djangocms_admin_style',
+    'ngMain',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+    'sekizai.context_processors.sekizai',
+    'cms.context_processors.cms_settings',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,15 +73,27 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
 )
 
 ROOT_URLCONF = 'pjlong_home.urls'
 
 WSGI_APPLICATION = 'pjlong_home.wsgi.application'
 
+TEMPLATE_LOADERS = (
+    'django.template.loaders.app_directories.Loader',
+)
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'templates'),
+    os.path.join(BASE_DIR, 'blog/templates'),
+)
+
+CMS_TEMPLATES = (
+    ('template_1.html', 'Template One'),
+    ('template_2.html', 'Template Two'),
 )
 
 # Database
@@ -66,15 +101,28 @@ TEMPLATE_DIRS = (
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pjlong_db',
+        'USER': DB['username'],
+        'PASSWORD': DB['password']
     }
+}
+
+# Migrations
+
+MIGRATION_MODULES = {
+    'cms': 'cms.migrations_django',
+    'menus': 'menus.migrations_django',
 }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = [
+    ('en-us', 'English'),
+]
 
 TIME_ZONE = 'UTC'
 
