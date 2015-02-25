@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
+var plumber = require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
 
 var paths = {
@@ -19,6 +20,7 @@ var paths = {
 
 gulp.task('sass', function () {
   return gulp.src(paths.css.src+'**/*.scss')
+    .pipe(plumber())
     .pipe(sass())
     .pipe(autoprefixer({
       browers: ['last 2 versions'],
