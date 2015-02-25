@@ -5,7 +5,7 @@ from django.views import generic
 
 ## Angular Views
 class IndexView(generic.TemplateView):
-    template_name = 'index.html'
+    template_name = 'ngMain/index.html'
 
 
 class TemplateView(generic.TemplateView):
