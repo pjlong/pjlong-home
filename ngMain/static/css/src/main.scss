@@ -1,0 +1,72 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather);
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+
+@import "base";
+
+.headroom {
+  $menuBarHeight: 3rem;
+
+  &.headroom--not-top {
+    background-color: #fff;
+
+    &.headroom--pinned {
+      top: 0;
+      box-shadow: 2px 0 5px rgba(50, 50 ,50, .7);
+      transition: all .25s ease;
+    }
+
+    &.headroom--unpinned {
+      top: -$menuBarHeight;
+      transition: all .25s ease;
+    }
+  }
+}
+
+$btnColor: #546e7a;
+$btnText: #cfd8dc;
+
+a.pj-btn {
+  background: linear-gradient(#ddd 75%, #ccc);
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #666;
+  display: inline-block;
+  padding: .5rem 1rem;
+  text-decoration: none;
+
+  &:hover {
+    background: linear-gradient(#ccc 75%, #ddd);//lighten($btnColor, 10%);
+    color: #333;
+  }
+}
+
+a.self {
+  &:before {
+    content: attr(href);
+  }
+}
+
+a.download,
+button.download,
+input[type="button"].download {
+  padding-left: 2rem;
+  color: #555;
+
+  .download {
+    fill: #555;
+    position: absolute;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-top: -.25rem;
+    margin-left: -1.75rem;
+
+  }
+
+  &:hover .download {
+    fill: #333;
+  }
+}
+
+//@import "resume";
+@import "rwby";
+@import "picnic_day";
