@@ -4,12 +4,12 @@ from django.views import generic
 
 
 ## Angular Views
-class IndexView(generic.TemplateView):
+class NgIndexView(generic.TemplateView):
     template_name = 'ngMain/index.html'
 
 
-class TemplateView(generic.TemplateView):
+class NgTemplateView(generic.TemplateView):
 
     def get_template_names(self):
-        template = ["{0}.html".format(self.kwargs['template_name'])]
+        template = ["ngMain/{0}.html".format(self.kwargs['template_name'])]
         return template
