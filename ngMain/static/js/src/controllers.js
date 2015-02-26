@@ -34,11 +34,6 @@ angular.module('pjlongApp.controllers').controller('menuCtrl', ['$scope', '$loca
   ];
 }]);
 
-
-angular.module('pjlongApp.controllers').controller('titleCtrl', ['$scope', 'Page', function ($scope, Page) {
-  $scope.Page = Page;
-}]);
-
 angular.module('pjlongApp.controllers').controller('resumeCtrl', ['$scope', 'Page', function ($scope, Page) {
   Page.setTitle('My Resume');
 
