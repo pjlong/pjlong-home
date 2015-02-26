@@ -1,2 +1,31 @@
+{% extends 'ngMain/base.html' %}
+{% load static sekizai_tags %}
 
-<flip-clock></flip-clock>
+{% block ng_app %}picnicDayApp{% endblock ng_app %}
+
+{% block meta %}{% endblock meta %}
+{% block css %}
+  {% addtoblock 'css' %}
+  <link rel="stylesheet" href="{% static 'css/libs/flipclock.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dist/picnic_day.css' %}">
+  {% endaddtoblock %}
+{% endblock css %}
+
+{% block content %}
+<main ng-controller="picnicDayCtrl">
+  <div class="text-center container-fluid" ng-if="itsPicnicDay()">
+    <h1>IT'S PICNIC DAY!!!!!!!</h1>
+  </div>
+  <div class="text-center container-fluid" ng-if="!itsPicnicDay()">
+    <h1>No, it's not picnic day...</h1>
+    <flip-clock countdown="picnicDayDate"></flip-clock>
+  </div>
+</main>
+{% endblock content %}
+
+{% block js %}
+  {% addtoblock 'js' %}
+  <script src="{% static 'js/libs/flipclock.min.js' %}"></script>
+  <script src="{% static 'js/src/picnicDay.js' %}"></script>
+  {% endaddtoblock %}
+{% endblock js %}
