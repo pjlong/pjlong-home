@@ -21,10 +21,12 @@ pjlongApp.config(['$routeProvider', '$locationProvider',
     $locationProvider.html5Mode(true);
 }]);
 
-pjlongApp.factory('Page', function () {
+pjlongApp.factory('PageTitle', function () {
   var title = "Home";
+  var siteName = "Pjlong.me";
   return {
-    title: function () { return title; },
-    setTitle: function(newTitle) { title = newTitle; }
+    get: function () { return title + ' | ' + siteName; },
+    set: function(newTitle) { title = newTitle; }
   };
-});
+})
+;

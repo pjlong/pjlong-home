@@ -1,7 +1,7 @@
 angular.module('pjlongApp.controllers', []);
 
-angular.module('pjlongApp.controllers').controller('homeCtrl', ['$scope', 'Page', function ($scope, Page) {
-  Page.setTitle('Home');
+angular.module('pjlongApp.controllers').controller('homeCtrl', ['$scope', 'PageTitle', function ($scope, PageTitle) {
+  PageTitle.set('Home');
   $scope.test = 'Hello World!';
 
 }]);
@@ -34,8 +34,8 @@ angular.module('pjlongApp.controllers').controller('menuCtrl', ['$scope', '$loca
   ];
 }]);
 
-angular.module('pjlongApp.controllers').controller('resumeCtrl', ['$scope', 'Page', function ($scope, Page) {
-  Page.setTitle('My Resume');
+angular.module('pjlongApp.controllers').controller('resumeCtrl', ['$scope', 'PageTitle', function ($scope, PageTitle) {
+  PageTitle.set('My Resume');
 
   $scope.header = {
     name: "PHILLIP LONG",
@@ -53,8 +53,8 @@ angular.module('pjlongApp.controllers').controller('resumeCtrl', ['$scope', 'Pag
 }]);
 
 
-angular.module('pjlongApp.controllers').controller('rwbyCtrl', ['$scope', '$window', 'Page', function ($scope, $window, Page) {
-  Page.setTitle('RWBY');
+angular.module('pjlongApp.controllers').controller('rwbyCtrl', ['$scope', '$window', 'PageTitle', function ($scope, $window, PageTitle) {
+  PageTitle.set('RWBY');
 
   $scope.videoWidth = 640;
   $scope.videoHeight = 360;

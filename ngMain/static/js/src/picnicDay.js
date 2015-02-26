@@ -4,7 +4,12 @@ angular.module('picnicDayApp', ['ngRoute'])
     $locationProvider.html5Mode(true);
 }])
 
-.controller('picnicDayCtrl', ['$scope', '$location', function ($scope, $location) {
+.run(['$rootScope', 'PageTitle', function ($rootScope, PageTitle) {
+    $rootScope.PageTitle = PageTitle;
+}])
+
+.controller('picnicDayCtrl', ['$scope', '$location', 'PageTitle', 
+        function ($scope, $location, PageTitle) {
     $scope.picnicDayDate = new Date (2015, 03, 18, 0, 0, 0);
     $scope.today = new Date();
 
@@ -41,4 +46,13 @@ angular.module('picnicDayApp', ['ngRoute'])
         }
     };
 }])
+
+
+.factory('PageTitle', function () {
+  var title = "Is it Picnic Day?";
+  return {
+    get: function () { return title; },
+    set: function(newTitle) { title = newTitle; }
+  };
+})
 ;

@@ -9,7 +9,7 @@
   {% render_block 'meta' %}
   {% block meta %}{% endblock meta %}
 
-  <title ng-bind="Page.title()"></title>
+  <title ng-bind="PageTitle.get()"></title>
   <base href="/">
 
   {% addtoblock 'css' %}
