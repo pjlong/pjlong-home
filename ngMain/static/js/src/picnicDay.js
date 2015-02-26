@@ -1,14 +1,26 @@
-angular.module('picnicDayApp', [])
+angular.module('picnicDayApp', ['ngRoute'])
 
-.controller('picnicDayCtrl', ['$scope', function ($scope) {
+.config(['$locationProvider', function ($locationProvider) {
+    $locationProvider.html5Mode(true);
+}])
+
+.controller('picnicDayCtrl', ['$scope', '$location', function ($scope, $location) {
     $scope.picnicDayDate = new Date (2015, 03, 18, 0, 0, 0);
+    $scope.today = new Date();
+
+
+    /*
+    Test url params to set current date to Picnic Day
+     */
+    if ("__itsPicnicDay" in $location.search() && $location.search().__itsPicnicDay == "true") {
+        $scope.today = $scope.picnicDayDate;
+    }
 
     $scope.itsPicnicDay = function () {
-        var today = new Date();
         
-        return today.getFullYear() == $scope.picnicDayDate.getFullYear() &&
-            today.getMonth() == $scope.picnicDayDate.getMonth() &&
-            today.getDate() == $scope.picnicDayDate.getDate();
+        return $scope.today.getFullYear() == $scope.picnicDayDate.getFullYear() &&
+            $scope.today.getMonth() == $scope.picnicDayDate.getMonth() &&
+            $scope.today.getDate() == $scope.picnicDayDate.getDate();
     };
 }])
 

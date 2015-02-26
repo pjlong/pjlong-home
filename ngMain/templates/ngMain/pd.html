@@ -13,10 +13,10 @@
 
 {% block content %}
 <main ng-controller="picnicDayCtrl">
-  <div class="text-center container-fluid" ng-if="itsPicnicDay()">
+  <div class="text-center container-fluid" ng-if="itsPicnicDay()" ng-cloak>
     <h1>IT'S PICNIC DAY!!!!!!!</h1>
   </div>
-  <div class="text-center container-fluid" ng-if="!itsPicnicDay()">
+  <div class="text-center container-fluid" ng-if="!itsPicnicDay()" ng-cloak>
     <h1>No, it's not picnic day...</h1>
     <flip-clock countdown="picnicDayDate"></flip-clock>
   </div>

@@ -5,3 +5,7 @@ html {
 body {
   min-height: 100%;
 }
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
